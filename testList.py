@@ -55,6 +55,7 @@ LL = [
 ['ADAM', 'BART', 'LISA']
 ]
 
+print (LL)
 print (LL[0][0])
 print (LL[1][1])
 print (LL[2][2])
