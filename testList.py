@@ -49,5 +49,18 @@ print (t2)
 t2[1][1].append('changeable')
 print(t2)
 
+LL = [
+['APPLE', 'GOOGLE', 'MICROSOFT'],
+['JAVA', 'PYTHON', 'RUBY', 'PHP'],
+['ADAM', 'BART', 'LISA']
+]
+
+print (LL[0][0])
+print (LL[1][1])
+print (LL[2][2])
+
+
+
+
 
 
