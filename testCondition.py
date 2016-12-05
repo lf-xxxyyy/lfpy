@@ -17,3 +17,4 @@ if birth > 2000:
 else:
 	print('00qian')
 
+
