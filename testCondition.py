@@ -16,3 +16,4 @@ if birth > 2000:
 	print('00hou')
 else:
 	print('00qian')
+
