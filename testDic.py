@@ -26,3 +26,8 @@ s2 = set([1, 4, 11])
 print (s & s2)
 
 print (s | s2)
+
+
+a = ['c', 'b', 'a']
+a.sort()
+print (a)
