@@ -24,3 +24,7 @@ for x in list(range(10000)):
 	sum = sum + x 
 print (sum)
 
+
+L = ['bart', 'lisa', 'adam']
+for name in L: 
+	print ('hello, %s' % name)
