@@ -1,8 +1,6 @@
 def my_abs(x):
-
 	if not isinstance(x, (int, float)) :
 		raise TypeError('bad operand type')
-
 	if x>=0:
 		return x; 
 	else :
@@ -39,3 +37,10 @@ def calc(numbers):
 	for num in numbers:
 		sum = sum + num * num
 	return sum
+
+
+def fact(n):
+	if n == 1 : 
+		return 1
+	else :
+		return n * fact(n - 1)
