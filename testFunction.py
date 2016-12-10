@@ -11,3 +11,8 @@ def my_abs(x):
 
 def my_hello(x):
 	return 'hello %s' % x
+
+def power(x) :
+	if not isinstance(x, (int, float)) :
+		raise TypeError('bad operand type')
+	return x * x
