@@ -7,3 +7,7 @@ def my_abs(x):
 		return x; 
 	else :
 		return -x;
+
+
+def my_hello(x):
+	return 'hello %s' % x
