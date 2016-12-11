@@ -33,3 +33,23 @@ def my_reduce(f, lst):
 print (my_reduce(add, [1,2,3,4]))
 
 print (reduce(add, [1,2,3,4,5,6]))
+
+def my_cat(x, y):
+	return x*10 + y
+
+print (my_reduce(my_cat, [1,2,3,4,5,6,7]))
+
+def char2num(s) :
+	return {'0':0, '1':1,'2':2,'3':3,'4':4, '5':5,'6':6,'7':7,'8':8,'9':9}[s]
+
+
+print (reduce(my_cat, my_map(char2num, '13579')))
+
+print (reduce (lambda x, y : x*10 +y, map(char2num, '234234234')))
+
+
+
+
+
+
+
