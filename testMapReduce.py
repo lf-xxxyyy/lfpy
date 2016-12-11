@@ -1,3 +1,5 @@
+from functools import reduce
+
 def f(x):
 	return x * x
 
@@ -30,3 +32,4 @@ def my_reduce(f, lst):
 
 print (my_reduce(add, [1,2,3,4]))
 
+print (reduce(add, [1,2,3,4,5,6]))
