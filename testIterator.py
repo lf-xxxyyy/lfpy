@@ -23,3 +23,4 @@ def power(x):
 	return x * x
 
 print (add(-5, 6, power))
+
