@@ -12,3 +12,7 @@ print(sorted([36, 5, -12, 9, -21], key = my_power))
 
 
 print(sorted(['bob', 'about', 'Zoo', 'Credit'], key = str.lower))
+
+print(sorted(['bob', 'about', 'Zoo', 'Credit'], key = str.lower, reverse=True))
+
+
