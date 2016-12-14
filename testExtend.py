@@ -44,3 +44,33 @@ class Tortoise(Animal):
 run_twice(Tortoise())
 
 
+print (type(123))
+print (type('sdfsdf'))
+print (type(None))
+
+
+print (type(abs))
+
+print (type(123) == type(456))
+print (type(123) == int)
+print (type('abc') == type('123'))
+
+
+print (isinstance((1,2,4), (list, tuple)))
+
+print (dir())
+
+print (len('ABC'))
+
+print('abc'.__len__())
+
+print ('ABC'.lower())
+
+
+
+
+
+
+
+
+
