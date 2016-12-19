@@ -16,3 +16,9 @@ d2 = pickle.load(f2)
 f2.close()
 
 print(d2)
+
+import json
+d3 = dict(name ='bob', age = 20, score = 88)
+
+print(json.dumps(d3))
+
