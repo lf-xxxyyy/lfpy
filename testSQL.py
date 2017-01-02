@@ -31,6 +31,5 @@ for aa in values :
 	print (aa)
 
 
-
 cursor.close()
 conn.close()
