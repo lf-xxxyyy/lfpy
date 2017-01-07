@@ -23,6 +23,15 @@ class GetTid(SystemCall):
 		print('hey, runing %d' % self.task.tid)
 
 
+class NewTask(SystemCall):
+	def __init__(self, target):
+		self.target = target
+	def handle(self):
+		tid = self.sched.new(self.target)
+		self.task.sendval = tid
+		self.sched.schedule(self.task)
+
+
 class Scheduler(object):
 	def __init__(self):
 		self.ready = queue.Queue()
