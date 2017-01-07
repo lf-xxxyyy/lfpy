@@ -1,6 +1,6 @@
 import xml.sax
 import asyncio
-
+from cothread import threaded
 
 class EventHandler(xml.sax.ContentHandler):
 	def __init__(self, target):
@@ -44,7 +44,7 @@ def filter_on_field(fieldname, value, target):
 		d = (yield)
 		if d.get(fieldname) == value:
 			target.send(d)
-
+b
 
 
 @asyncio.coroutine
@@ -54,7 +54,7 @@ def bus_locations():
 		print (bus)
 
 
-xml.sax.parse('some.xml', EventHandler(buses_to_dicts(bus_locations())))
+xml.sax.parse('some.xml', EventHandler(buses_to_dicts(  threaded(bus_locations())   )))
 
 
 

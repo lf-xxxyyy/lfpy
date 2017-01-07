@@ -1,11 +1,15 @@
-def h() :
-	print ('before yield')
-	yield 5 
-	print ('after yield')
+def grep(pattern):
+	while True:
+		line = (yield)
+		if pattern in line : 
+			print (line)
 
-c = h()
-c.next()
+g = grep('python')
 
+g.send(None)
 
-print('call next')
-c.next()
+g.send('hello , python')
+
+g.send('fuck')
+
+g.send('hey, python')
