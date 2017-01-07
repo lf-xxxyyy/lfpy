@@ -31,6 +31,18 @@ class NewTask(SystemCall):
 		self.task.sendval = tid
 		self.sched.schedule(self.task)
 
+class KillTask(SystemCall):
+	def __init__(self, tid):
+		self.tid = tid
+	def handle(self):
+		task = self.sched.taskmap.get(self.tid, None)
+		if task:
+			task.target.close()
+			self.task.sendval = True
+		else :
+			self.task.sendval = False
+		self.sched.schedule(self.task)
+
 
 class Scheduler(object):
 	def __init__(self):
@@ -66,7 +78,6 @@ class Scheduler(object):
 			self.schedule(task)
 
 
-
 def foo():
 	mytid = yield GetTid()
 	for i in range(10):
@@ -80,9 +91,24 @@ def bar():
 		yield
 
 
+def sometask():
+	t1 = yield NewTask(bar())
+
+
+def main():
+	child = yield NewTask(foo())
+	for i in range(10):
+		yield
+	yield KillTask(child)
+	print ('main done')
+
+
+
+
+
+
 sched = Scheduler()
-sched.new(foo())
-sched.new(bar())
+sched.new(main())
 sched.mainloop()
 
 
