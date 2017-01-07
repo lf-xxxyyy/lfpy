@@ -12,6 +12,17 @@ class Task(object):
 		return self.target.send(self.sendval)
 
 
+class SystemCall(object):
+	def handle(self):
+		pass
+
+class GetTid(SystemCall):
+	def handle(self):
+		self.task.sendval = self.task.tid
+		self.sched.schedule(self.task)
+		print('hey, runing %d' % self.task.tid)
+
+
 class Scheduler(object):
 	def __init__(self):
 		self.ready = queue.Queue()
@@ -35,6 +46,11 @@ class Scheduler(object):
 			task = self.ready.get()
 			try :
 				result = task.run()
+				if isinstance(result, SystemCall):
+					result.task = task
+					result.sched = self
+					result.handle()
+					continue
 			except StopIteration:
 				self.exit(task)
 				continue
@@ -43,13 +59,15 @@ class Scheduler(object):
 
 
 def foo():
+	mytid = yield GetTid()
 	for i in range(10):
-		print ("I'm foo")
+		print ("I'm foo, %d" % mytid)
 		yield
 
 def bar():
+	mytid = yield GetTid()
 	for i in range(5):
-		print ("I'm bar")
+		print ("I'm bar, %d" % mytid)
 		yield
 
 
@@ -57,24 +75,6 @@ sched = Scheduler()
 sched.new(foo())
 sched.new(bar())
 sched.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
