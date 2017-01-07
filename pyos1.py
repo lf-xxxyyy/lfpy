@@ -26,21 +26,29 @@ class Scheduler(object):
 	def schedule(self, task):
 		self.ready.put(task)
 
+	def exit(self, task):
+		print ("task %d terminated" % task.tid)
+		del self.taskmap[task.tid]
+
 	def mainloop(self):
 		while self.taskmap:
 			task = self.ready.get()
-			result = task.run()
+			try :
+				result = task.run()
+			except StopIteration:
+				self.exit(task)
+				continue
 			self.schedule(task)
 
 
 
 def foo():
-	while True:
+	for i in range(10):
 		print ("I'm foo")
 		yield
 
 def bar():
-	while True:
+	for i in range(5):
 		print ("I'm bar")
 		yield
 
